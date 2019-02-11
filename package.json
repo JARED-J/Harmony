@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "Harmony",
   "version": "1.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "Chat application with voice rooms.",
   "engines": {
     "node": ">= 7.0.0"
   },
