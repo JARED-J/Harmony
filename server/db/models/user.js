@@ -26,6 +26,17 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  profImgUrl: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  bio: {
+    type: Sequelize.STRING
+  },
+  userName: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
 })
 

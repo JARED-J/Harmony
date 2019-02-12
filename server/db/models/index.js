@@ -1,18 +1,18 @@
 const User = require('./user')
+const Hserver = require('./hserver')
+const Tchannel = require('./tchannel')
+const Message = require('./message')
 
-/**
- * If we had any associations to make, this would be a great place to put them!
- * ex. if we had another model called BlogPost, we might say:
- *
- *    BlogPost.belongsTo(User)
- */
+// RELATIONS
+Hserver.hasMany(User)
+Hserver.hasMany(Tchannel)
+Tchannel.belongsTo(Hserver)
+Message.belongsTo(Tchannel)
+Message.belongsTo(User)
 
-/**
- * We'll export all of our models here, so that any time a module needs a model,
- * we can just require it from 'db/models'
- * for example, we can say: const {User} = require('../db/models')
- * instead of: const User = require('../db/models/user')
- */
 module.exports = {
-  User
+  User,
+  Hserver,
+  Tchannel,
+  Message
 }
