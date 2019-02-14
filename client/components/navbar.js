@@ -3,18 +3,22 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import {MainScreen} from './index'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>Harmony</h1>
+    <h1>Welcome To Harmony</h1>
     <nav>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+          {/*<div>
+              <Link to="/home">Home</Link>
+              <a href="#" onClick={handleClick}>
+                Logout
+              </a>
+            </div> */}
+          {<MainScreen />}
         </div>
       ) : (
         <div>
