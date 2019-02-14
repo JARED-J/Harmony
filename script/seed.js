@@ -33,13 +33,16 @@ async function seed() {
 
   const hservers = await Promise.all([
     Hserver.create({
-      title: 'Test1'
+      title: 'Test1',
+      adminId: 1
     }),
     Hserver.create({
-      title: 'Bot server'
+      title: 'Bot server',
+      adminId: 2
     }),
     Hserver.create({
-      title: 'Harmony!'
+      title: 'Harmony!',
+      adminId: 3
     })
   ])
 

@@ -32,3 +32,18 @@ router.post('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.delete('/', async (req, res, next) => {
+  const {id, userId} = req.body
+  try {
+    await Hserver.destroy({
+      where: {
+        id: id,
+        adminId: userId
+      }
+    })
+    res.send('Hserver was successfully deleted.')
+  } catch (err) {
+    next(err)
+  }
+})

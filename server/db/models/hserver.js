@@ -6,6 +6,11 @@ const Hserver = db.define('hserver', {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false
+  },
+  adminId: {
+    type: Sequelize.INTEGER,
+    unique: true,
+    allowNull: false
   }
 })
 
