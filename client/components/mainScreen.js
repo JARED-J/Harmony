@@ -5,7 +5,6 @@ import {fetchServers} from '../store'
 
 class MainScreen extends Component {
   componentDidMount() {
-    console.log('This.props in lifecyle method', this.props)
     const {id} = this.props.user
     this.props.loadServers(id)
   }

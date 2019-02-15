@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Hserver, User} = require('../db/models')
+const {Hserver, User, Hserver_users} = require('../db/models')
 module.exports = router
 
 router.get('/:uId', async (req, res, next) => {
@@ -42,7 +42,22 @@ router.delete('/', async (req, res, next) => {
         adminId: userId
       }
     })
-    res.send('Hserver was successfully deleted.')
+    res.send(id)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/:sId/user/:uId', async (req, res, next) => {
+  try {
+    const {sId, uId} = req.params
+    await Hserver_users.destroy({
+      where: {
+        hserverId: sId,
+        userId: uId
+      }
+    })
+    res.send(sId)
   } catch (err) {
     next(err)
   }
