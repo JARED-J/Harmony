@@ -5,7 +5,7 @@ const REMOVE_USER_FROM_SERVER = 'REMOVE_USER_FROM_SERVER'
 const DELETE_SERVER = 'DELETE_SERVER'
 
 // INITIAL STATE
-const defaultServers = {}
+const defaultServers = []
 
 // ACTION CREATORS
 const getServers = servers => ({type: GET_USER_SERVERS, servers})

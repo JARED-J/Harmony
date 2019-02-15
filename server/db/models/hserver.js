@@ -11,6 +11,11 @@ const Hserver = db.define('hserver', {
     type: Sequelize.INTEGER,
     unique: true,
     allowNull: false
+  },
+  imgUrl: {
+    type: Sequelize.STRING,
+    allowEmpty: true
+    //,defaultValue: ''
   }
 })
 
