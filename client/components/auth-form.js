@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
@@ -30,10 +31,35 @@ const AuthForm = props => {
         {error && error.response && <div> {error.response.data} </div>}
       </form>
       <a href="/auth/google">{displayName} with Google</a>
+
+      {displayName === 'Login' ? <SignUpLink /> : <LoginLink />}
     </div>
   )
 }
 
+// <Link to="/login">Login</Link>
+// <Link to="/signup">Sign Up</Link>
+const SignUpLink = () => {
+  return (
+    <div>
+      <Link to="/signup">
+        <small>Don't have an account?</small>
+        <small>Click Here to sign up!</small>
+      </Link>
+    </div>
+  )
+}
+
+const LoginLink = () => {
+  return (
+    <div>
+      <Link to="/login">
+        <small>Already Have an account?</small>
+        <small>Click Here to login.</small>
+      </Link>
+    </div>
+  )
+}
 /**
  * CONTAINER
  *   Note that we have two different sets of 'mapStateToProps' functions -

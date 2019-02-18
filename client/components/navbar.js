@@ -1,24 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {DashBoard} from './index'
+//import {Link} from 'react-router-dom'
+import {SideBar} from './index'
 
 const Navbar = ({isLoggedIn}) => (
   <div>
     <h1>Welcome To Harmony</h1>
-    {isLoggedIn ? (
-      <div>
-        {/* The navbar will show these links after you log in */}
-        <DashBoard />
-      </div>
-    ) : (
-      <div>
-        {/* The navbar will show these links before you log in */}
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Sign Up</Link>
-      </div>
-    )}
+    {isLoggedIn && <SideBar />}
   </div>
 )
 

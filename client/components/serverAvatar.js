@@ -1,16 +1,26 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {fetchChannels} from '../store'
 
-const ServerAvatar = ({props}) => {
+const ServerAvatar = ({props, loadChannels}) => {
   const {imgUrl, id, title} = props
   return (
-    <div>
+    <div onClick={() => loadChannels(id)}>
       <small>ServerAvatar Component</small>
-      <Link to={`/hserver/${id}`}>
+      <Link to={`/server/${2}`}>
         <img className="" src={imgUrl} alt={title} />
       </Link>
     </div>
   )
 }
 
-export default ServerAvatar
+const mapDispatch = dispatch => {
+  return {
+    loadChannels(id) {
+      dispatch(fetchChannels(id))
+    }
+  }
+}
+
+export default connect(null, mapDispatch)(ServerAvatar)

@@ -2,22 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {logout} from '../store'
+import {Navbar} from './index'
 
 /**
  * COMPONENT
  */
-export const UserHome = props => {
-  const {userName, email} = props
-
+const UserHome = props => {
+  const {userName, email, handleClick} = props
   return (
     <div>
       <h3>Welcome, {userName ? userName : email}</h3>
-      {/*<div>
-        <Link to="/home">Home</Link>
-        <a href="#" onClick={handleClick}>
-          Logout
-        </a>
-      </div> */}
+      <Navbar />
+      <div onClick={handleClick}>
+        <a href="#">Logout</a>
+      </div>
     </div>
   )
 }
@@ -31,15 +29,15 @@ const mapState = state => {
   }
 }
 
-// const mapDispatch = dispatch => {
-//   return {
-//     handleClick() {
-//       dispatch(logout())
-//     }
-//   }
-// }
+const mapDispatch = dispatch => {
+  return {
+    handleClick() {
+      dispatch(logout())
+    }
+  }
+}
 
-export default connect(mapState)(UserHome)
+export default connect(mapState, mapDispatch)(UserHome)
 
 /**
  * PROP TYPES
