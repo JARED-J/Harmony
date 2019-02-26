@@ -1,14 +1,21 @@
 import React from 'react'
-import {ChannelContainer, Navbar, MessageContainer} from './index'
+import {connect} from 'react-redux'
+import {Navbar, MessageContainer, UserContainer} from './index'
 
-const MainContainer = () => {
+const MainContainer = props => {
   return (
     <div>
       <Navbar />
-      <ChannelContainer />
       <MessageContainer />
+      {props.showUsers ? <UserContainer /> : null}
     </div>
   )
 }
 
-export default MainContainer
+const mapState = state => {
+  return {
+    showUsers: state.showUsers.bool
+  }
+}
+
+export default connect(mapState)(MainContainer)

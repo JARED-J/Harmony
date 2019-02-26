@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {ServerAvatar} from './index'
+import {ServerAvatar, ChannelList} from './index'
 import {fetchServers} from '../store'
 
 class ServerList extends Component {

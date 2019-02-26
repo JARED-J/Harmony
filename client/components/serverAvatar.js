@@ -1,14 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchChannels} from '../store'
+import {setChannelsByServer} from '../store'
 
-const ServerAvatar = ({props, loadChannels}) => {
-  const {imgUrl, id, title} = props
+const ServerAvatar = ({props, setChannels}) => {
+  const {imgUrl, id, title, tchannels} = props
   return (
-    <div onClick={() => loadChannels(id)}>
+    <div onClick={() => setChannels(tchannels)}>
       <small>ServerAvatar Component</small>
-      <Link to={`/server/${2}`}>
+      <Link to={`/server/${id}`}>
         <img className="" src={imgUrl} alt={title} />
       </Link>
     </div>
@@ -17,8 +17,8 @@ const ServerAvatar = ({props, loadChannels}) => {
 
 const mapDispatch = dispatch => {
   return {
-    loadChannels(id) {
-      dispatch(fetchChannels(id))
+    setChannels(channels) {
+      dispatch(setChannelsByServer(channels))
     }
   }
 }

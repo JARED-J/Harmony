@@ -1,12 +1,12 @@
 import React from 'react'
-import {ServerList} from './index'
+import {ServerList, ChannelList} from './index'
 
 const SideBar = () => {
   return (
     <div>
       <small>SideBar Component</small>
       <ServerList />
-      {/*<CreateOrJoinServerButton />*/}
+      <ChannelList />
     </div>
   )
 }

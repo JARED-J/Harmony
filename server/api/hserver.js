@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Hserver, User, Hserver_users} = require('../db/models')
+const {Hserver, User, Hserver_users, Tchannel} = require('../db/models')
 module.exports = router
 
 router.get('/:uId', async (req, res, next) => {
@@ -15,6 +15,10 @@ router.get('/:uId', async (req, res, next) => {
               userId: uId
             }
           }
+        },
+        {
+          model: Tchannel,
+          required: true
         }
       ]
     })
