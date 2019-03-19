@@ -3,61 +3,107 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment
+} from 'semantic-ui-react'
 
-/**
- * COMPONENT
- */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
-
-      {displayName === 'Login' ? <SignUpLink /> : <LoginLink />}
+      <div className="login-form">
+        <style>{`
+        body > div,
+        body > div > div,
+        body > div > div > div,
+        body > div > div > div > div.login-form {
+          height: 100%;
+        }
+      `}</style>
+        <Grid
+          textAlign="center"
+          style={{height: '100%'}}
+          verticalAlign="middle"
+        >
+          <Grid.Column style={{maxWidth: 450}}>
+            <Header as="h2" color="teal" textAlign="center">
+              <Image src="/favicon.ico" /> Log-in to your account
+            </Header>
+            <Form size="large" onSubmit={handleSubmit} name={name}>
+              <Segment stacked>
+                <Form.Input
+                  fluid
+                  icon="user"
+                  iconPosition="left"
+                  placeholder="E-mail address"
+                  htmlFor="email"
+                  name="email"
+                />
+                <Form.Input
+                  fluid
+                  icon="lock"
+                  iconPosition="left"
+                  placeholder="Password"
+                  type="password"
+                  htmlFor="password"
+                  name="password"
+                />
+                {displayName === 'Sign Up' ? (
+                  <Form.Input
+                    fluid
+                    icon="user"
+                    iconPosition="left"
+                    placeholder="Username"
+                  />
+                ) : null}
+                <Button color="teal" fluid size="large">
+                  {displayName}
+                </Button>
+              </Segment>
+            </Form>
+            {displayName === 'Login' ? <SignUpLink /> : <LoginLink />}
+            {error && error.response && errMess(error.response.data)}
+            <a href="/auth/google">{displayName} with Google</a>
+          </Grid.Column>
+        </Grid>
+      </div>
     </div>
   )
 }
 
-// <Link to="/login">Login</Link>
-// <Link to="/signup">Sign Up</Link>
+const errMess = data => {
+  return (
+    <Message>
+      <small>{data}</small>
+    </Message>
+  )
+}
+
 const SignUpLink = () => {
   return (
-    <div>
+    <Message>
       <Link to="/signup">
         <small>Don't have an account?</small>
         <small>Click Here to sign up!</small>
       </Link>
-    </div>
+    </Message>
   )
 }
 
 const LoginLink = () => {
   return (
-    <div>
+    <Message>
       <Link to="/login">
         <small>Already Have an account?</small>
         <small>Click Here to login.</small>
       </Link>
-    </div>
+    </Message>
   )
 }
 /**
